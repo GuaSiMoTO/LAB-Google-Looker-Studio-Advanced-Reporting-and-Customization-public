@@ -28,16 +28,67 @@ You can download the SFRARR_Earthquake_Catalogue.csv file in this repository. Th
 
 Go to your looker studio and create a Data Source with the CSV contained in this repository.
 
-### Iteration 1: Start tunning the Data Source
+### Iteration 1: Start tunning the Data Source dates
 
+Modify the date fields, and make them fit into their corresponding format. For example, "Day" field must be "Day of Month" type.
 
-### Bonus 
+Warning: There are no data type for "Second" or "Year". We will fix them in next iteration.
 
+### Iteration 2: Little trick for the year and second field
 
+As we said in the theory session, Looker Studio parser sometimes fail. This is one of this cases. We have to prepare the year field to make him understand it. So lets do the next steps:
+- Change the "Year" field name to "Year_categorical", and change it to Numeric data type.
+- Create a calculated field named "Year" that uses this formula --> year(DATE(Year_raw,1,1)).
+- Hide the "Year_raw" field, so it doesnt appear in the reports (in the three dots, click on it and select "Hide").
 
-### Bonus 
+As you see in the formula, we create a fake date with our year, and then  we extract the year. This generates a year Data Type.
 
+Sadly, the "Second" field doesn't have a specific type, so just convert it to "Numeric".
 
+### Iteration 3: Latitude & Longitude
+
+This two fields have an important information, but Looker can't use them properly in Map charts if they are not correctly formated. We have to combine them. Follow the next steps:
+- Create a Calculated field that concatenate both fields into one.
+- Name it "Location".
+- Hide the "Latitude" and "Longitude" fields
+- Hint 1 --> an example of ("Latitude Longitude")[https://support.google.com/looker-studio/answer/9843174?hl=en#latitude-longitude&zippy=%2Cin-this-article] Data type is "51.5074,-0.1278". Your calculated field must create this.
+- Hint 2 --> use one of this functions (Text Functions)[https://support.google.com/looker-studio/topic/7041728?hl=en&ref_topic=7019880&sjid=6090106204308859891-EU]
+
+### Iteration 4: Some small fixes on Default Aggregation
+
+Now, we will analyze the default aggregations in the numeric fields. We have two numeric fields: "Depth" and "MagSize". In this case, to represent the reality we should apply an Averange/Max/Min in both. This is because it doesnt make sense to Sum the depth of multiple earthquakes.
+
+### Iteration 5: Start creating a Map Report
+
+Our crativity session starts now! Lets begin with a Bubble Map. We have two interesting variables here to plot in the Map: The "Depth" and the "MagSize". Set the next parameters on your bubble map:
+- Size --> Depth
+- Color Metric --> MagSize
+- Go to Style and tune the color, so the progresion is (Green, yellow, red). For non data metrics, use grey.
+
+### Iteration 6: Add some control to your data
+
+The map is colorfoul and full of information, right? Well, maybe too much information that is hard to know what happened... Lets add some Sliders and DropDown list to the report, so we can focus our vision to some point of the data. Add the follow controls:
+- Slider for "MagSize".
+- Fixed List for "Year_categorical".
+- An advanced filter with "Id".
+
+Do not forget to prettify them!
+
+### Iteration 7: Drilling down into the dates.
+
+In this step we will need a new Calculated field. It will be the "MagSize" with no decimals. For this, use the mathematical round function that Looker provide, and create a new Calculated field named "Rounded_MagSize".
+
+After this, create a stacked Column chart, with:
+- Drill down enabled.
+- "Year_categorical" and "Month" as Dimension.
+- "Rounded_MagSize" as Breakdown Dimension.
+- "Record count" as metric.
+- Sort by "Year_categorical" in descending mode.
+- Secondary sort, use "Rounded_MagSize".
+
+### Iteration 8: Use Versioning to save your data.
+
+To finish, do not forget to save your version!. First, Save a version named "Final Report" and mthen ake a screenshot of your Version History. Save it for us!
 
 ### Bonus
 
