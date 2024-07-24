@@ -65,6 +65,8 @@ Our crativity session starts now! Lets begin with a Bubble Map. We have two inte
 - Color Metric --> MagSize
 - Go to Style and tune the color, so the progresion is (Green, yellow, red). For non data metrics, use grey.
 
+  WARNING: because of the huge amount of data, the map could be non centered. You will have to drag and zoom to the zone where the data is.
+
 ### Iteration 6: Add some control to your data
 
 The map is colorfoul and full of information, right? Well, maybe too much information that is hard to know what happened... Lets add some Sliders and DropDown list to the report, so we can focus our vision to some point of the data. Add the follow controls:
@@ -90,7 +92,20 @@ After this, create a stacked Column chart, with:
 
 To finish, do not forget to save your version!. First, Save a version named "Final Report" and mthen ake a screenshot of your Version History. Save it for us!
 
-### Bonus
+### Bonues 3
+
+
+
+### Bonus 2
+
+Nice job! Now lets try something harder. There is a dataset with the Welfare of the countries here --> (Poverty And Inequality Platform)[https://datacatalog.worldbank.org/search/dataset/0063646/-Poverty-and-Inequality-Platform--PIP---Percentiles]
+
+Download the "Survey-years percentiles - 2017 PPP values" CSV, and design a report that shows us the world welfare. The report needs to have this characteristics:
+- It has to be interactive. The user should be able to choose a country and analyze it (use a Map, so the user can select a country with the map)
+- It has to show the averange welfare evolution through the percentile.
+- There should be a Chart where we can compare the averange welfare of all countries.
+
+Tip: The "percentile" field and the "avg_welfare" are the most important ones.
 
 
 # Submission
