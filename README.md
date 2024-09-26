@@ -79,7 +79,7 @@ Our crativity session starts now! Lets begin with a Bubble Map. We have two inte
 
 The map is colorfoul and full of information, right? Well, maybe too much information that is hard to know what happened... Lets add some Sliders and DropDown list to the report, so we can focus our vision to some point of the data. Add the follow controls:
 - Slider for "MagSize".
-- Fixed List for "Year_categorical".
+- Fixed List for "Year".
 - An advanced filter with "Id".
 
 Do not forget to prettify them!
