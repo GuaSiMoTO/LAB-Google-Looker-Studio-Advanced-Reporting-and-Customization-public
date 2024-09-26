@@ -38,7 +38,15 @@ Warning: There are no data type for "Second" or "Year". We will fix them in next
 
 As we said in the theory session, Looker Studio parser sometimes fail. This is one of this cases. We have to prepare the year field to make him understand it. So lets do the next steps:
 - Change the "Year" field name to "Year_categorical", and change it to Numeric data type.
-- Create a calculated field named "Year" that uses this formula --> year(DATE(Year_raw,1,1)).
+- Create a calculated field named "Year" that uses this formula -->
+1. CAST(Year AS STRING) //Convert numeric to string
+2. CONCAT(Step1, "-01-01") Concatenate with a false date 
+3. PARSE_DATE("%Y-%m-%d",Step2(Step1, "-01-01")) Convert to Date format
+4. Edit Dimesion
+   
+   ![image](https://github.com/user-attachments/assets/0f033776-5e08-4c3e-beb8-1a4e35bba3a1)
+ 
+  
 - Hide the "Year_raw" field, so it doesnt appear in the reports (in the three dots, click on it and select "Hide").
 
 As you see in the formula, we create a fake date with our year, and then  we extract the year. This generates a year Data Type.
