@@ -12,29 +12,39 @@ Start by forking the provided GitHub repository to your account and then clone i
 - [Learn how to fork this repo](https://guides.github.com/activities/forking/)
 - Clone this repo into your `code/labs` folder
 
-### Scenario
+## Scenario
+
+<div align="center">
+  <img 
+    src="https://github.com/user-attachments/assets/5dd48eab-9604-46c1-8c08-0787fba022e3" 
+    alt="Descripción de la imagen" 
+    width="700" 
+    height="auto" 
+  />
+</div>
+</n>
 
 This time we will work with the Earthquake data of Central Asia. We got this data from this link 💥"Harmonized Earthquacke Catalogue for Central Asia"💥 --> [Central Asia Earthquake Catalogue](https://datacatalog.worldbank.org/search/dataset/0064167/Central-Asia-earthquake-catalogue)
 
 This dataset contains all the earthquakes that happened in Central Asia (at this point I think is obvious, right? 😁). Pay attention to this variable types:
 - Latitude and Longitude 🌍
 - Dates variables 📅
-
-### Starter File
+  
+## Starter File
 
 You can download the SFRARR_Earthquake_Catalogue.csv file in this repository. This CSV contains all the data for this project.
 
-### Iteration 0: Create a Data Source with the SFRARR_Earthquake_Catalogue.csv file.
+## Iteration 0: Create a Data Source with the SFRARR_Earthquake_Catalogue.csv file.
 
 Go to your looker studio and create a Data Source with the CSV contained in this repository.
 
-### Iteration 1: Start tunning the Data Source dates 📅
+## Iteration 1: Start tunning the Data Source dates 📅
 
 Modify the date fields, and make them fit into their corresponding format. For example, "Day" field must be "Day of Month" type.
 
 Warning: There are no data type for "Second" or "Year". We will fix them in next iteration.
 
-### Iteration 2: Little trick for the year and second field 🔢
+## Iteration 2: Little trick for the year and second field 🔢
 
 As we said in the theory session, Looker Studio parser sometimes fail. This is one of this cases. We have to prepare the year field to make him understand it. So lets do the next steps:
 - Change the "Year" field name to "Year_categorical", and change it to Numeric data type.
@@ -53,7 +63,7 @@ As you see in the formula, we create a fake date with our year, and then  we ext
 
 Sadly, the "Second" field doesn't have a specific type, so just convert it to "Numeric".
 
-### Iteration 3: Latitude & Longitude 🌎
+## Iteration 3: Latitude & Longitude 🌎
 
 This two fields have an important information, but Looker can't use them properly in Map charts if they are not correctly formated. We have to combine them. Follow the next steps:
 - Create a Calculated field that concatenate both fields into one.
@@ -62,11 +72,11 @@ This two fields have an important information, but Looker can't use them properl
 - Hint 1 --> an example of ("Latitude Longitude")[https://support.google.com/looker-studio/answer/9843174?hl=en#latitude-longitude&zippy=%2Cin-this-article] Data type is "51.5074,-0.1278". Your calculated field must create this.
 - Hint 2 --> use one of this functions (Text Functions)[https://support.google.com/looker-studio/topic/7041728?hl=en&ref_topic=7019880&sjid=6090106204308859891-EU]
 
-### Iteration 4: Some small fixes on Default Aggregation 🏚️
+## Iteration 4: Some small fixes on Default Aggregation 🏚️
 
 Now, we will analyze the default aggregations in the numeric fields. We have two numeric fields: "Depth" and "MagSize". In this case, to represent the reality we should apply an Averange/Max/Min in both. This is because it doesnt make sense to Sum the depth of multiple earthquakes.
 
-### Iteration 5: Start creating a Map Report 🧭
+## Iteration 5: Start creating a Map Report 🧭
 
 Our crativity session starts now! Lets begin with a Bubble Map. We have two interesting variables here to plot in the Map: The "Depth" and the "MagSize". Set the next parameters on your bubble map:
 - Size --> Depth
@@ -75,7 +85,7 @@ Our crativity session starts now! Lets begin with a Bubble Map. We have two inte
 
   WARNING: because of the huge amount of data, the map could be non centered. You will have to drag and zoom to the zone where the data is.
 
-### Iteration 6: Add some control to your data 🚗
+## Iteration 6: Add some control to your data 🚗
 
 The map is colorfoul and full of information, right? Well, maybe too much information that is hard to know what happened... Lets add some Sliders and DropDown list to the report, so we can focus our vision to some point of the data. Add the follow controls:
 - Slider for "MagSize".
@@ -84,7 +94,7 @@ The map is colorfoul and full of information, right? Well, maybe too much inform
 
 Do not forget to prettify them!
 
-### Iteration 7: Drilling down into the dates 🛠️
+## Iteration 7: Drilling down into the dates 🛠️
 
 In this step we will need a new Calculated field. It will be the "MagSize" with no decimals. For this, use the mathematical round function that Looker provide, and create a new Calculated field named "Rounded_MagSize".
 
@@ -96,11 +106,11 @@ After this, create a stacked Column chart, with:
 - Sort by "Year_categorical" in descending mode.
 - Secondary sort, use "Rounded_MagSize".
 
-### Iteration 8: Use Versioning to save your data 💾
+## Iteration 8: Use Versioning to save your data 💾
 
 To finish, do not forget to save your version!. First, Save a version named "Final Report" and mthen ake a screenshot of your Version History. Save it for us!
 
-### Bonus 1
+## Bonus 1
 
 Lets explore the 🦠COVID🦠 impact over the world now. Here you can download the monthly report over the world --> (COVID cases)[https://covid.ourworldindata.org/data/owid-covid-data.csv]. For further metadata, here is the original webpage --> (OurWorldIndata Covid cases)[https://ourworldindata.org/covid-cases].
 
@@ -110,7 +120,7 @@ In this bonus you will have to understand the data and it fields, and build a re
 - Also, from the categories countries, you can check who did it better, who had more cases but low dead ratio, etc. 📈
 - Would be interesting to get some global KPIs, to see how it afected to the whole globe.
 
-### Bonus 2
+## Bonus 2
 
 Nice job! Now lets try something harder. There is a dataset with the 🆘Welfare of the countries🆘 here --> (Poverty And Inequality Platform)[https://datacatalog.worldbank.org/search/dataset/0063646/-Poverty-and-Inequality-Platform--PIP---Percentiles]
 
